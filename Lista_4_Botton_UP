@@ -28,7 +28,7 @@ def ask_askables(kb):
       kb['askables'].remove(atom)
 
 def printkb(kb):
-  rules - kb['rules']
+  rules = kb['rules']
   
   print('rules:')
   for r in rules:
