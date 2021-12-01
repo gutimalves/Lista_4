@@ -7,7 +7,7 @@ def prove_DC_TD(kb, querry):
     g = kb['rules'][a][0]
     g = B + g
     else:
-      return 'could"t complete prov.'
+      return 'could"t complete proof.'
  return 'yes'
  
 def prove_DC_BU(kb):
