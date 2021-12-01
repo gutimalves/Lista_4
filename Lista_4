@@ -1,0 +1,65 @@
+def prove_DC_BU(kb):
+
+  c = []
+  
+  ask_askables(kb)
+  
+  rule_selected = true
+  
+  while rule_selected:
+    rule_selected = false
+    for head in kd['rules']:
+      if head not in c:
+              if not kd['rules'][head][0]:
+                c.append(head)
+                rule_selected = true
+              else:
+                for b in kb['rules'][head]:
+                  if set(b),issubset(set(c)):
+                    c.append(head)
+                    rule_selected = true
+                    break
+  return c 
+
+def ask_askables(kb):
+  for atom in kb['askables']:
+    if ask(atom):
+      kb['rules'][atom] = [[]]
+      kb['askables'].remove(atom)
+
+def printkb(kb):
+  rules - kb['rules']
+  
+  print('rules:')
+  for r in rules:
+    bodies = rules[r]
+    for b in bodies:
+      if b:
+        print('{}<-{}'.format(r,'&'.join(b)))
+      else:
+        print('{}.'.format(r))
+  print('askables:')
+  
+  print(kb['askables'])
+  
+def ask(askable):
+  ans = input('Is {} true?'.format(askable))
+  return true if ans in ['sim','yes','y','s']else false
+  
+  if _name_ == "_main_":
+  
+  kb = { 'rules': {
+  'a': [['b','c']],
+  'b': [['e'],['d']],
+  'c': [[]],
+  'd': [['h']],
+  'e': [[]],
+  'g': [['a','b','e']],
+  'f': [['h','b']]
+  },
+  'askables' : []}
+  printkb(kb)
+  
+  c = prove_DC_BU(kb)
+  
+  print(c)
