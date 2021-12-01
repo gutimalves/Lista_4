@@ -1,7 +1,18 @@
-def prove_DC_BU(kb):
-
-  c = []
+def prove_DC_TD(kb, querry):
+  g = querry
   
+  while g: 
+    a = g.pop(0)
+    if a in kb['rules']:
+    g = kb['rules'][a][0]
+    g = B + g
+    else:
+      return 'could"t complete prov.'
+ return 'yes'
+ 
+def prove_DC_BU(kb):
+  c=[]
+    
   ask_askables(kb)
   
   rule_selected = true
@@ -28,7 +39,7 @@ def ask_askables(kb):
       kb['askables'].remove(atom)
 
 def printkb(kb):
-  rules = kb['rules']
+  rules - kb['rules']
   
   print('rules:')
   for r in rules:
@@ -63,3 +74,5 @@ def ask(askable):
   c = prove_DC_BU(kb)
   
   print(c)
+  
+  print(prove_DC_TD(kb,['a']))
